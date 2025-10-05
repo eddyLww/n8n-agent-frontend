@@ -3,7 +3,7 @@
     <div class="container">
       <!-- 头部导航 -->
       <div class="header">
-        <button class="back-btn" @click="goBack">
+        <button class="back-btn" @click="goHome">
           ← 返回
         </button>
         <h2 class="title">资料检索</h2>
@@ -211,7 +211,7 @@ export default {
       return Math.ceil(total.value / pageSize)
     })
 
-    const goBack = () => {
+    const goHome = () => {
       router.push('/')
     }
 
@@ -457,7 +457,7 @@ export default {
       totalPages,
       loading,
       hasSearched,
-      goBack,
+      goHome,
       handleSearch,
       clearFilters,
       selectCloudDrive,

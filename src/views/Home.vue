@@ -80,8 +80,8 @@ export default {
         name: '视频生成',
         description: 'AI视频内容创作',
         icon: '🎬',
-        status: 'pending',
-        statusText: '开发中'
+        status: 'active',
+        statusText: '已开发'
       },
       {
         id: 'search',
@@ -98,6 +98,8 @@ export default {
         router.push('/article')
       } else if(appId === "search"){
         router.push('/search')
+      } else if(appId === 'video') {
+        router.push('/video')
       }
     }
 

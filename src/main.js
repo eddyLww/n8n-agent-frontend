@@ -8,6 +8,8 @@ import ArticleList from './views/ArticleList.vue'
 import ArticleRewrite from './views/ArticleRewrite.vue'
 import SearchHome from './views/SearchHome.vue'
 import ResourceDetail from './views/ResourceDetail.vue'
+import VideoHome from './views/VideoHome.vue'
+import VideoGenerate from './views/VideoGenerate.vue'
 import './style.css'
 
 /**
@@ -19,7 +21,9 @@ const routes = [
   { path: '/article/list/:category', name: 'ArticleList', component: ArticleList },
   { path: '/article/rewrite', name: 'ArticleRewrite', component: ArticleRewrite },
   { path: '/search', name: 'SearchHome', component: SearchHome },
-  { path: '/resource/detail', name: 'ResourceDetail', component: ResourceDetail }
+  { path: '/resource/detail', name: 'ResourceDetail', component: ResourceDetail },
+  { path: '/video', name: 'VideoHome', component: VideoHome },
+  { path: '/video/generate', name: 'VideoGenerate', component: VideoGenerate }
 ]
 
 const router = createRouter({

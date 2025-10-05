@@ -20,3 +20,12 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/eddyLww/n8n-agent-frontend.git
 git push -u origin main
+
+
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+
+
+提交到github
+无代理，直接走网络
+idea 也不要设置代理

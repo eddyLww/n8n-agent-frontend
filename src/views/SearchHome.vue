@@ -212,6 +212,23 @@ export default {
     })
 
     const goHome = () => {
+      // 清空表单字段
+      searchForm.kw = ''
+      searchForm.category = '0'
+      searchForm.sizeRange = ''
+      searchForm.diffDay = ''
+      searchForm.searchType = ''
+      searchForm.resType = 'baidu'
+
+      // 清空搜索结果与状态
+      searchResults.value = []
+      total.value = 0
+      currentPage.value = 1
+      hasSearched.value = false
+
+      // 删除缓存
+      clearSearchState()
+
       router.push('/')
     }
 

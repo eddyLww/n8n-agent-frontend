@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <button class="back-btn" @click="goBack">← 返回</button>
     <div class="card p-2">
       <h2 class="text-center text-primary mb-2">视频生成</h2>
 
@@ -41,13 +42,14 @@
 
 <script>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getTitleAndContent, createVideo } from '../api/video'
 
 export default {
   name: 'VideoGenerate',
   setup() {
     const route = useRoute()
+    const router = useRouter()
     const source = ref(route.query.source || 'baokuan')
     const title = ref('')
     const content = ref('')
@@ -94,13 +96,18 @@ export default {
       }
     }
 
+    const goBack = () => {
+      router.go(-1)
+    }
+
     return {
       title,
       content,
       loading,
       loadingType,
       handleBaokuan,
-      handleCreateVideo
+      handleCreateVideo,
+      goBack
     }
   }
 }
@@ -132,6 +139,20 @@ export default {
   .ml-1 { margin-left: 0; }
   .actions { justify-content: space-between; }
 }
+
+.back-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-bottom: 16px;
+}
+
 </style>
 
 

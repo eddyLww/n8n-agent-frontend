@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <button class="back-btn" @click="goBack">← 返回</button>
     <div class="header text-center mb-3">
       <h2 class="text-primary">视频生成首页</h2>
       <p class="text-muted">请选择生成方式</p>
@@ -35,8 +36,11 @@ export default {
         query: { source }
       })
     }
+    const goBack = () => {
+      router.go(-1)
+    }
 
-    return { goGenerate }
+    return { goGenerate, goBack }
   }
 }
 </script>
@@ -44,6 +48,18 @@ export default {
 <style scoped>
 .header h2 {
   font-weight: 700;
+}
+.back-btn {
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  margin-bottom: 16px;
 }
 </style>
 

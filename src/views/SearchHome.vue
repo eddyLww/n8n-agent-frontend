@@ -339,6 +339,10 @@ export default {
       return filelist.slice(0, 5) // 只显示前5条
     }
 
+    const escapeRegExp = (str) => {
+      return String(str).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    }
+
     const getHighlightedFilename = (file, highs) => {
       if (!highs || !highs['filelist.filename']) {
         return file.filename
@@ -348,10 +352,9 @@ export default {
       let filename = file.filename
       
       highlights.forEach(highlight => {
-        filename = filename.replace(
-          new RegExp(highlight.replace(/<mark>/g, '').replace(/<\/mark>/g, ''), 'gi'),
-          highlight
-        )
+        const raw = highlight.replace(/<mark>/g, '').replace(/<\/mark>/g, '')
+        const safe = escapeRegExp(raw)
+        filename = filename.replace(new RegExp(safe, 'gi'), highlight)
       })
       
       return filename

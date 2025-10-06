@@ -16,6 +16,7 @@
             :key="app.id"
             class="app-card"
             :class="{ active: currentApp === app.id }"
+            @mouseenter="handleMouseEnter(app.id)"
             @click="switchApp(app.id)"
           >
             <div class="app-icon">
@@ -64,7 +65,7 @@ export default {
   name: 'Home',
   setup() {
     const router = useRouter()
-    const currentApp = ref('article')
+    const currentApp = ref('')
 
     const apps = ref([
       {
@@ -93,7 +94,12 @@ export default {
       }
     ])
 
+    const handleMouseEnter = (appId) => {
+      currentApp.value = appId
+    }
+
     const switchApp = (appId) => {
+      currentApp.value = appId
       if(appId === "article"){
         router.push('/article')
       } else if(appId === "search"){
@@ -110,6 +116,7 @@ export default {
     return {
       currentApp,
       apps,
+      handleMouseEnter,
       switchApp,
       goToArticleHome
     }

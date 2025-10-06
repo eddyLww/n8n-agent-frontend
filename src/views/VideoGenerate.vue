@@ -24,11 +24,11 @@
         ></textarea>
       </div>
 
-      <div class="actions mt-2">
-        <button class="btn btn-primary" @click="handleBaokuan" :disabled="loading">
+      <div class="video-actions mt-2">
+        <button class="video-btn" @click="handleBaokuan" :disabled="loading">
           {{ loading && loadingType === 'baokuan' ? '生成中...' : '爆款一下' }}
         </button>
-        <button class="btn btn-primary ml-1" @click="handleCreateVideo" :disabled="loading">
+        <button class="video-btn ml-1" @click="handleCreateVideo" :disabled="loading">
           {{ loading && loadingType === 'video' ? '生成中...' : '生成视频' }}
         </button>
       </div>
@@ -155,17 +155,41 @@ export default {
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
 }
 
-.actions {
+.video-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.video-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.video-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.5);
+}
+
+.video-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .ml-1 { margin-left: 12px; }
 
 @media (max-width: 768px) {
   .ml-1 { margin-left: 0; }
-  .actions { justify-content: space-between; }
+  .video-actions { justify-content: center; gap: 12px; }
 }
 
 .back-btn {

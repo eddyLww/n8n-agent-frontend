@@ -1,31 +1,3 @@
-gitee
-
-git config --global user.name "Eddyer"
-git config --global user.email "514878524@qq.com"
-
-git init
-touch README.md
-git add README.md
-git commit -m "first commit"
-git remote add origin https://gitee.com/Eddyer/n8n-agent-frontend.git
-git push -u origin "master"
-
-
-
-git：
-echo "# n8n-agent-frontend" >> README.md
-git init
-git add .
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/eddyLww/n8n-agent-frontend.git
-git push -u origin main
-
-
-git config --global http.proxy http://127.0.0.1:7890
-git config --global https.proxy http://127.0.0.1:7890
-
-
 提交到github
 无代理，直接走网络
 idea 也不要设置代理

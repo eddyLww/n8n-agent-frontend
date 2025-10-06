@@ -2,7 +2,7 @@
   <div class="container">
     <button class="back-btn" @click="goBack">← 返回</button>
     <div class="card p-2">
-      <h2 class="text-center text-primary mb-2">视频生成</h2>
+      <h2 class="text-center text-primary mb-2">{{ pageTitle }}</h2>
 
       <div class="mb-2">
         <label class="text-secondary mb-1">标题</label>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getTitleAndContent, createVideo } from '../api/video'
 
@@ -65,6 +65,16 @@ export default {
     })
 
     const handleBaokuan = async () => {
+      // 校验
+      if (source.value === 'baokuan' && !String(title.value || '').trim()) {
+        alert('请先填写标题')
+        return
+      }
+      if (source.value === 'jianxun' && !String(content.value || '').trim()) {
+        alert('请先填写文案内容')
+        return
+      }
+
       loading.value = true
       loadingType.value = 'baokuan'
       try {
@@ -87,6 +97,16 @@ export default {
     }
 
     const handleCreateVideo = async () => {
+      // 校验
+      if (source.value === 'baokuan' && !String(title.value || '').trim()) {
+        alert('请先填写标题')
+        return
+      }
+      if (source.value === 'jianxun' && !String(content.value || '').trim()) {
+        alert('请先填写文案内容')
+        return
+      }
+
       loading.value = true
       loadingType.value = 'video'
       try {
@@ -105,11 +125,14 @@ export default {
       router.go(-1)
     }
 
+    const pageTitle = computed(() => source.value === 'jianxun' ? '简讯视频生成' : '爆款视频生成')
+
     return {
       title,
       content,
       loading,
       loadingType,
+      pageTitle,
       handleBaokuan,
       handleCreateVideo,
       goBack

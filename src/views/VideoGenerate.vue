@@ -68,10 +68,15 @@ export default {
       loading.value = true
       loadingType.value = 'baokuan'
       try {
-        const { data } = await getTitleAndContent({ source: source.value })
+        const { data } = await getTitleAndContent({
+          title: title.value,
+          content: content.value,
+          source: source.value
+        })
         if (data) {
-          title.value = data.title || ''
-          content.value = data.content || ''
+          title.value = data.title ?? title.value
+          content.value = data.content ?? content.value
+          source.value = data.source ?? source.value
         }
       } catch (e) {
         console.error(e)
